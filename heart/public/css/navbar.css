@@ -1,0 +1,61 @@
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+/* body::-webkit-scrollbar {
+    to remove scroll-bar from the side
+    overflow: -moz-scrollbars-none;
+    width: 0 !important;
+    display: none;
+} */
+::-webkit-scrollbar {
+    margin-left: 1em;
+    width: 8px;
+    height: 3px;
+    background-color: rgba(131, 131, 131, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(129, 129, 129, 0.5);
+}
+
+::selection {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+html {
+    scrollbar-width: none;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+
+
+nav {
+    font-weight: bold;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100% !important;
+}
+
+#bg-color {
+    background-color: #fffaf5 !important;
+}
+
+
+.navbar-brand img {
+    max-width: 4rem;
+    height: 2.7rem;
+    position: absolute;
+    top: 2px;
+    left: 10px;
+
+}
+
+.nav-link:hover {
+    color: red;
+}

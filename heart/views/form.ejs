@@ -1,0 +1,219 @@
+<%- include('partials/head', { cssPath: '/css/form.css' }) %>
+
+    <body>
+        <%- include('partials/navbar',{ cssPath: '/css/navbar.css' }) %>
+
+            <div class="container">
+                <form action="/predict" method="POST" class="row g-3">
+
+                    <!-- Row 1 -->
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" name="name" class="form-control" id="name" required>
+                        </div>
+                        <div class="col-lg-4 ms-0 ms-lg-2 mt-2 mt-lg-0">
+                            <label for="gender" class="form-label">Gender</label>
+                            <select class="form-select" name="Sex" aria-label="Gender" id="gender" required>
+                                <option selected>Select Gender</option>
+                                <option value="1">Male</option>
+                                <option value="0">Female</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="row mt-2">
+                        <div class="col-3 col-lg-2">
+                            <label for="Height" class="form-label">Height (cm)</label>
+                            <input type="number" name="height" class="form-control" id="Height" min="50" max="251"
+                                required>
+                        </div>
+
+                        <div class="col-3 col-lg-2">
+                            <label for="Weight" class="form-label">Weight (kg)</label>
+                            <input type="number" name="weight" class="form-control" id="Weight" min="1" required>
+                        </div>
+                        <div class="col-3 col-lg-3">
+                            <!-- Added a temporary &nbsp; for liningup Text Box -->
+                            <label for="age" class="form-label">Age&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </label>
+                            <input type="number" name="Age" class="form-control" id="age" min="18" max="120" required>
+
+                        </div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="row mt-5">
+                        <div class="form-group">
+                            <label for="healthConditions">Do you suffer from any of the following?</label>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="HighBP" id="HighBP" value="1">
+                                <label class="form-check-label" for="HighBP">High Blood Pressure</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="HighChol" id="HighChol" value="1">
+                                <label class="form-check-label" for="HighChol">High Cholesterol</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Stroke" id="Stroke" value="1">
+                                <label class="form-check-label" for="Stroke">Stroke</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 4 -->
+                    <div class="row mt-5">
+                        <div class="form-group">
+                            <label for="diabetes">Which type of diabetes do you suffer from?</label>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="Diabetes" id="DiabetesNONE"
+                                    value="0">
+                                <label class="form-check-label" for="DiabetesNONE">None</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="Diabetes" id="DiabetesPRE" value="1">
+                                <label class="form-check-label" for="DiabetesPRE">Pre-Diabetes</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="Diabetes" id="Diabetes" value="2">
+                                <label class="form-check-label" for="Diabetes">Diabetes</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 5 -->
+                    <div class="row mt-5">
+                        <div class="form-group">
+                            <label for="activities">Do you indulge in any of the following activities?</label>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Smoker" id="Smoker" value="1">
+                                <label class="form-check-label" for="Smoker">Smoking</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="HvyAlcoholConsump"
+                                    id="HvyAlcoholConsump" value="1">
+                                <label class="form-check-label" for="HvyAlcoholConsump">Heavy Alcohol
+                                    Consumption</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="PhysActivity" id="PhysActivity"
+                                    value="1">
+                                <label class="form-check-label" for="PhysActivity">Physical Activity</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 6 -->
+                    <div class="row mt-5">
+                        <div class="form-group">
+                            <label for="diet">Does your diet include these food items?</label>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Fruits" id="Fruits" value="1">
+                                <label class="form-check-label" for="Fruits">Fruits</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Veggies" id="Veggies" value="1">
+                                <label class="form-check-label" for="Veggies">Veggies</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 7 -->
+                    <div class="row mt-5">
+                        <div class="form-group">
+                            <label for="GenHlth" class="form-label">How would you rate your General Health?</label>
+                            <input type="range" name="GenHlth" class="form-range" min="1" max="5" id="GenHlth">
+                            <h4 id="GenHlthOut"></h4>
+                        </div>
+                    </div>
+
+                    <!-- Row 8 -->
+                    <div class="row mt-5">
+                        <label for="Hlth">Within the past 30 Days, how many days did you suffer from Bad Physical &
+                            Mental Health? <h5>(On a range of
+                                0-30)</h5></label>
+
+                        <div class="row mt-2">
+                            <div class="col-4 col-lg-3">
+                                <label for="PhysHlth" class="form-label">Physical Health</label>
+                                <input type="number" name="PhysHlth" class="form-control" id="PhysHlth" min="0" max="30"
+                                    required>
+                            </div>
+                            <div class="col-4 col-lg-3">
+                                <label for="MentHlth" class="form-label">Mental Health</label>
+                                <input type="number" name="MentHlth" class="form-control" id="MentHlth" min="0" max="30"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 9 -->
+                    <div class="row mt-5">
+                        <div class="form-group">
+                            <label for="CholCheck">Are your cholesterol levels regularly checked?</label>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="CholCheck" id="CholCheckYES"
+                                    value="1">
+                                <label class="form-check-label" for="CholCheckYES">Yes</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="CholCheck" id="CholCheckNO"
+                                    value="0">
+                                <label class="form-check-label" for="CholCheckNO">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Row 10 -->
+                    <div class="row mt-5">
+                        <div class="form-group">
+                            <label for="DiffWalk">Do you have difficulty walking?</label>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="DiffWalk" id="DiffWalkYES" value="1">
+                                <label class="form-check-label" for="DiffWalkYES">Yes</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="DiffWalk" id="DiffWalkNO" value="0">
+                                <label class="form-check-label" for="DiffWalkNO">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Last Row -->
+                    <div class="col-12 mt-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                            <label class="form-check-label" for="gridCheck">
+                                By continuing, you agree to the
+                                <a href="#" target="_self" rel="noopener noreferrer">Terms &
+                                    Conditions</a>
+                                and <a href="#" target="_self" rel="noopener noreferrer">Privacy
+                                    Policy.</a>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+
+            <script src="/scripts/form.js"></script>
+    </body>
